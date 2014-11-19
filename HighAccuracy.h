@@ -7,7 +7,7 @@
 #ifndef __HIGHACCURACY_H__
 #define __HIGHACCURACY_H__
 
-#include <cinttypes>
+#include <cstdint>
 #include <string>
 #include <vector>
 
@@ -33,6 +33,9 @@ public:
     }
     inline int len() const {
         return static_cast<int>(_num.size());
+    }
+    inline int32_t div(int32_t x) {
+        return _div(x);
     }
 
     HighAccuracy& operator*= (int32_t x);
