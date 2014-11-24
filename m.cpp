@@ -1,6 +1,6 @@
 /*
- * m1.cpp
- * Copyright (C) 2014  <moon5ckq@gmail.com>
+ * m.cpp
+ * Copyright (C) 2014 mlckq <moon5ckq@gmail.com>, xxr <xxr3376@gmail.com>
  *
  * Distributed under terms of the MIT license.
  */
@@ -24,9 +24,10 @@ vector<int> read(const char* path) {
 }
 
 void m1(int argc, char **argv) {
-    vector<int> p = read(argv[2]), p_;
+    vector<int> p = read(argv[2]), p_, q;
     int n = static_cast<int>(p.size());
     p_.resize(n);
+    q.resize(n);
     HighAccuracy k;
     if (argc > 3)
         k.load(argv[3]);
@@ -45,11 +46,10 @@ void m1(int argc, char **argv) {
     HighAccuracy x = m + k;
     //step 3
     t.reset(n, 1);
+    for (int i = 0; i < n; ++i)
+        q[i] = x.div(i+1);
     for (int i = n - 1; i >= 0; --i) {
-        int c = SimpleDiv(x, fact);
-        x -= fact * c;
-        if (i) fact /= i;
-        p_[i] = t.getKth(c + 1);
+        p_[i] = t.getKth(q[i] + 1);
         t.set(p_[i], 0);
     }
 
@@ -83,12 +83,11 @@ void m2(int argc, char **argv) {
     HighAccuracy x = m + k;
     //step 3
     t.reset(n, 1);
+    for (int i = 0; i < n; ++i)
+        q[i] = x.div(i+1);
     for (int i = n - 1; i >= 0; --i) {
-        int c = SimpleDiv(x, fact);
-        x -= fact * c;
-        int y = t.getKth(c + 1);
+        int y = t.getKth(q[i] + 1);
         p_[y - 1] = i + 1;
-        if (i) fact /= i;
         t.set(y, 0);
     }
 
@@ -201,9 +200,6 @@ void m4(int argc, char **argv) {
     for (int i = n - 1; i >= 0; --i)
         printf("%d ", p_[i]);
     puts("");
-
-
-
 }
 
 int main(int argc, char **argv) {
