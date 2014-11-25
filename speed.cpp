@@ -125,10 +125,10 @@ vector<int> read(const char* path) {
     fclose(fin);
     return ret;
 }
-vector<int> p;
+vector<int> g;
 
 void m1(int argc, char **argv) {
-    vector<int> p_, q;
+    vector<int> p(g), p_, q;
     int n = static_cast<int>(p.size());
     p_.resize(n);
     q.resize(n);
@@ -160,7 +160,7 @@ void m1(int argc, char **argv) {
 }
 
 void m2(int argc, char **argv) {
-    vector<int> q, p_;
+    vector<int> p(g), p_, q;
     int n = static_cast<int>(p.size());
     p_.resize(n);
     q.resize(n);
@@ -195,7 +195,7 @@ void m2(int argc, char **argv) {
 }
 
 void m3(int argc, char **argv) {
-    vector<int> q, p_;
+    vector<int> p(g), p_, q;
     int n = static_cast<int>(p.size());
     p_.resize(n);
     q.resize(n);
@@ -231,7 +231,7 @@ void m3(int argc, char **argv) {
 }
 
 void m4(int argc, char **argv) {
-    vector<int> q, p_;
+    vector<int> p(g), p_, q;
     int n = static_cast<int>(p.size());
     p_.resize(n);
     q.resize(n);
@@ -300,7 +300,7 @@ int main(int argc, char **argv) {
     }
     double startTime, endTime;
 
-    p = read(argv[2]);
+    g = read(argv[2]);
     startTime = getRealTime( );
 
     for (int i = 0; i < 10; i++) {
